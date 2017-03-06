@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gv_id"
-    android:numColumns="auto_fit"
-    android:gravity="center"
-    android:columnWidth="100dp"
-    android:stretchMode="columnWidth"
-    android:layout_height="fill_parent"
-    android:layout_width="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.jawahir.mymovie_p0.MainActivity">
 
-    <TextView
-        android:id="@+id/tv_title_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/tv_description_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</GridView>
+    <GridView
+        android:id="@+id/gv_movie"
+        android:numColumns="auto_fit"
+        android:gravity="center"
+        android:columnWidth="150dp"
+        android:stretchMode="columnWidth"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </GridView>
+</LinearLayout>
