@@ -1,10 +1,13 @@
 package com.example.jawahir.mymovie_p0.Utilities;
 
+import java.io.Serializable;
+
 /**
  * Created by jawahir on 5/3/17.
  */
 
-public class MovieData {
+public class MovieData implements Serializable{
+
     public String moviePath;
     public String movieDescription;
     public String movieName;

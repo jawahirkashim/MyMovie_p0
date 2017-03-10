@@ -3,11 +3,11 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp">
+    android:padding="10dp">
     <ImageView
         android:id="@+id/imgv_movieposter"
-        android:layout_width="80dp"
-        android:layout_height="80dp" />
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
     <TextView
         android:id="@+id/tv_moviposter"
         android:textSize="10dp"

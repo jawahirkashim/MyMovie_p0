@@ -10,6 +10,7 @@ import com.example.jawahir.mymovie_p0.Utilities.MovieData;
 import com.example.jawahir.mymovie_p0.Utilities.MovieJsonUtil;
 import com.example.jawahir.mymovie_p0.Utilities.NetworkUtil;
 
+import java.io.IOException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,15 +29,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        URL url = NetworkUtil.builtURL("test");
+        URL url = NetworkUtil.buildUrl("test");
         new MoviAsyncTask().execute(url);
     }
+
     class MoviAsyncTask extends AsyncTask<URL,Void,MovieData[]> {
 
         @Override
         protected MovieData[] doInBackground(URL... params) {
             URL url = params[0];
-            String jsonString = NetworkUtil.getResponseFromHttpURL(url);
+            String jsonString = null;
+            try {
+                jsonString = NetworkUtil.getResponseFromHttpUrl(url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             MovieData data[] = MovieJsonUtil.getSimpleMoviListFromJson(jsonString);
 
             return data;

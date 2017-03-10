@@ -2,6 +2,7 @@ package com.example.jawahir.mymovie_p0;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.*;
 import android.net.Uri;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jawahir.mymovie_p0.Utilities.MovieData;
 import com.squareup.picasso.Picasso;
@@ -48,17 +50,27 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.movieposter_grid,null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imgv_movieposter);
         TextView textView = (TextView) view.findViewById(R.id.tv_moviposter);
-        String moviePath = mdata[position].moviePath;
-        String title = mdata[position].movieName;
-        textView.setText(title);
+        final String moviePath = mdata[position].moviePath;
+        final String title = mdata[position].movieName;
+        //textView.setText(title);
         Picasso.with(context).load(moviePath).into(imageView);
         Log.d(TAG,title);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context,"msg "+title,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context,ChildActivity.class);
+                MovieData movieData = new MovieData(title,mdata[position].movieDescription,moviePath,mdata[position].rating);
+                intent.putExtra("Movieobject",movieData);
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 }
