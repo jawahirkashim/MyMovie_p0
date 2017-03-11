@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/m_top"
+        android:textAllCaps="false"
+        android:title="@string/menu_top"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/m_popular"
+        android:textAllCaps="false"
+        android:title="@string/menu_popular"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom"
+        />
+    <resources>
+        <style name="MyTheme" parent="android:Theme.Holo">
+            <item name="android:actionMenuTextAppearance">@style/MyMenuTextAppearance</item>
+        </style>
+        <style name="MyMenuTextAppearance" parent="android:TextAppearance.Holo.Widget.ActionBar.Menu">
+            <item name="android:textAllCaps">false</item>
+        </style>
+    </resources>
+</menu>

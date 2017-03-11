@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyMovie_p0</string>
+    <string name="error_id">Error !!</string>
+    <string name="menu_top">Top</string>
+    <string name="menu_popular">Popular</string>
+    <bool name="abc_config_actionMenuItemAllCaps">false</bool>
 </resources>

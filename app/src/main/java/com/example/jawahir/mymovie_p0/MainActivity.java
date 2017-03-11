@@ -4,7 +4,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.jawahir.mymovie_p0.Utilities.MovieData;
 import com.example.jawahir.mymovie_p0.Utilities.MovieJsonUtil;
@@ -15,8 +20,13 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
-    GridView gridView ;
-    int imageId ;
+    GridView gridView;
+    ProgressBar progressBar;
+    TextView textViewErrorMsg;
+    public  enum movieType {
+        TOP,
+        POPULAR
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,40 +34,93 @@ public class MainActivity extends AppCompatActivity {
 
         //get the id of all the view
         gridView = (GridView) findViewById(R.id.gv_movie);
-        imageId = R.drawable.image_01;
-        loadData();
+        progressBar = (ProgressBar) findViewById(R.id.pb_movie);
+        textViewErrorMsg = (TextView) findViewById(R.id.tv_error_msg);
+        progressBar.setVisibility(View.VISIBLE);
+        gridView.setVisibility(View.INVISIBLE);
+        textViewErrorMsg.setVisibility(View.INVISIBLE);
+        loadData(movieType.POPULAR);
     }
 
-    private void loadData() {
-        URL url = NetworkUtil.buildUrl("test");
+    private void loadData(movieType type) {
+        URL url = NetworkUtil.buildUrl(type);
         new MoviAsyncTask().execute(url);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int iteamThatwasClicked = item.getItemId();
+
+        if (iteamThatwasClicked == R.id.m_popular) {
+            loadData(movieType.POPULAR);
+        } else if (iteamThatwasClicked == R.id.m_top) {
+            loadData(movieType.TOP);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     class MoviAsyncTask extends AsyncTask<URL,Void,MovieData[]> {
 
         @Override
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
         protected MovieData[] doInBackground(URL... params) {
             URL url = params[0];
+            MovieData data[] = null;
             String jsonString = null;
+            //gridView.setV
+            //progressBar.setVisibility(1);
             try {
                 jsonString = NetworkUtil.getResponseFromHttpUrl(url);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            MovieData data[] = MovieJsonUtil.getSimpleMoviListFromJson(jsonString);
+            if (jsonString != null) {
+                data = MovieJsonUtil.getSimpleMoviListFromJson(jsonString);
+            }
+
 
             return data;
         }
 
         @Override
         protected void onPostExecute(MovieData[] movieDatas) {
-            //set movie data and images to each view
-            ImageAdapter imageAdapter = new ImageAdapter(MainActivity.this,movieDatas,imageId);
-            gridView.setAdapter(imageAdapter);
-            for (int i=0; i<movieDatas.length;i++) {
-                Log.v(TAG,"Movie Name:  "+ movieDatas[i].movieName);
+            progressBar.setVisibility(View.INVISIBLE);
+            if (movieDatas != null ) {
+                showData();
+                //set movie data and images to each view
+                ImageAdapter imageAdapter = new ImageAdapter(MainActivity.this,movieDatas);
+                gridView.setAdapter(imageAdapter);
+                for (int i=0; i<movieDatas.length;i++) {
+                    Log.v(TAG,"Movie Name:  "+ movieDatas[i].movieName);
+                }
+            } else {
+                showError();
+                Log.v(TAG,"Data is not available");
             }
+
+
         }
+    }
+    private void showData() {
+        progressBar.setVisibility(View.INVISIBLE);
+        textViewErrorMsg.setVisibility(View.INVISIBLE);
+        gridView.setVisibility(View.VISIBLE);
+    }
+
+    private void showError () {
+        progressBar.setVisibility(View.INVISIBLE);
+        gridView.setVisibility(View.INVISIBLE);
+        textViewErrorMsg.setVisibility(View.VISIBLE);
     }
 
 }

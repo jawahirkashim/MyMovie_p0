@@ -20,15 +20,17 @@ public class ChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_child);
         MovieData movieData = (MovieData) getIntent().getSerializableExtra("Movieobject");
 
-        View view;
+        /*View view;
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.activity_child,null);
-        ImageView imageView = (ImageView) view.findViewById(R.id.iv_child);
-        TextView textViewDesc = (TextView) view.findViewById(R.id.tv_desc);
-        TextView textViewTitle = (TextView) view.findViewById(R.id.tv_title);
-       // Picasso.with(this).load(movieData.moviePath).into(imageView);
+        view = inflater.inflate(R.layout.activity_child,null);*/
+        ImageView imageView = (ImageView) findViewById(R.id.img_child);
+        TextView textViewDesc = (TextView) findViewById(R.id.tv_desc);
+        TextView textViewTitle = (TextView) findViewById(R.id.tv_title);
+        TextView textViewReview = (TextView) findViewById(R.id.tv_review);
+        Picasso.with(this).load(movieData.moviePath).into(imageView);
         textViewTitle.setText(movieData.movieName);
         textViewDesc.setText(movieData.movieDescription);
+        textViewReview.setText("Rating : " + String.valueOf(movieData.rating));
 
 
         Log.d(TAG,"Child Class "+movieData.movieDescription);

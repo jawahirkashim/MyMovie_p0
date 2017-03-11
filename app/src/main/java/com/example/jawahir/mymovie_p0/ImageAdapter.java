@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,11 +29,10 @@ public class ImageAdapter extends BaseAdapter {
     private Context context;
     MovieData[] mdata;
     static final String TAG = ImageAdapter.class.getSimpleName();
-    int imageid;
-    public ImageAdapter(Context context,MovieData[] movieDatas,int imageid) {
+
+    public ImageAdapter(Context context,MovieData[] movieDatas) {
         this.context = context;
         mdata = movieDatas;
-        this.imageid = imageid;
     }
     @Override
     public int getCount() {
@@ -52,6 +52,7 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view;
+        //GridView gridView = (GridView) ;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.movieposter_grid,null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imgv_movieposter);

@@ -6,15 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.jawahir.mymovie_p0.MainActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <GridView
+            android:id="@+id/gv_movie"
+            android:numColumns="auto_fit"
+            android:gravity="center"
+            android:columnWidth="150dp"
+            android:stretchMode="columnWidth"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        </GridView>
+        <ProgressBar
+            android:id="@+id/pb_movie"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:visibility="invisible"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/tv_error_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="@string/error_id"
+            android:textSize="22sp"/>
+    </FrameLayout>
 
-    <GridView
-        android:id="@+id/gv_movie"
-        android:numColumns="auto_fit"
-        android:gravity="center"
-        android:columnWidth="150dp"
-        android:stretchMode="columnWidth"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-    </GridView>
 </LinearLayout>
