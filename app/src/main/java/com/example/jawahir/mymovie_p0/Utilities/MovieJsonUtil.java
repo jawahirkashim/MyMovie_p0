@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
+import java.util.Date;
 
 /**
  * Created by jawahir on 1/3/17.
@@ -51,7 +52,8 @@ public final class MovieJsonUtil {
                 double vote_average = jsonObj.getDouble("vote_average");
                 String overview = jsonObj.getString("overview");
                 data[i] = title+"\n "+overview;
-                MovieData mdata = new MovieData(title,overview,poster_path, vote_average);
+                String releaseDate = jsonObj.getString("release_date");
+                MovieData mdata = new MovieData(title,overview,poster_path, vote_average,releaseDate);
                 movieData[i] = mdata;
                 Log.v(TAG,"msg "+mdata.movieDescription+ " \n path  "+mdata.moviePath);
             }

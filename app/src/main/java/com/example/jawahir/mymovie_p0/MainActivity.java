@@ -1,5 +1,7 @@
 package com.example.jawahir.mymovie_p0;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData(movieType type) {
         URL url = NetworkUtil.buildUrl(type);
-        new MoviAsyncTask().execute(url);
+        if (isOnline()) {
+            new MoviAsyncTask().execute(url);
+        }
     }
 
     @Override
@@ -64,7 +68,24 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private void showData() {
+        progressBar.setVisibility(View.INVISIBLE);
+        textViewErrorMsg.setVisibility(View.INVISIBLE);
+        gridView.setVisibility(View.VISIBLE);
+    }
 
+    private void showError () {
+        progressBar.setVisibility(View.INVISIBLE);
+        gridView.setVisibility(View.INVISIBLE);
+        textViewErrorMsg.setVisibility(View.VISIBLE);
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnected();
+    }
     class MoviAsyncTask extends AsyncTask<URL,Void,MovieData[]> {
 
         @Override
@@ -77,8 +98,7 @@ public class MainActivity extends AppCompatActivity {
             URL url = params[0];
             MovieData data[] = null;
             String jsonString = null;
-            //gridView.setV
-            //progressBar.setVisibility(1);
+
             try {
                 jsonString = NetworkUtil.getResponseFromHttpUrl(url);
             } catch (IOException e) {
@@ -111,17 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    private void showData() {
-        progressBar.setVisibility(View.INVISIBLE);
-        textViewErrorMsg.setVisibility(View.INVISIBLE);
-        gridView.setVisibility(View.VISIBLE);
-    }
 
-    private void showError () {
-        progressBar.setVisibility(View.INVISIBLE);
-        gridView.setVisibility(View.INVISIBLE);
-        textViewErrorMsg.setVisibility(View.VISIBLE);
-    }
 
 }
 

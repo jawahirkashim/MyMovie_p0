@@ -67,7 +67,7 @@ public class ImageAdapter extends BaseAdapter {
             public void onClick(View v) {
                 //Toast.makeText(context,"msg "+title,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(context,ChildActivity.class);
-                MovieData movieData = new MovieData(title,mdata[position].movieDescription,moviePath,mdata[position].rating);
+                MovieData movieData = new MovieData(title,mdata[position].movieDescription,moviePath,mdata[position].rating,mdata[position].releaseDate);
                 intent.putExtra("Movieobject",movieData);
                 context.startActivity(intent);
             }

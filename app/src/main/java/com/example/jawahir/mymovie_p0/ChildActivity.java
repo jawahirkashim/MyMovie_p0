@@ -27,10 +27,12 @@ public class ChildActivity extends AppCompatActivity {
         TextView textViewDesc = (TextView) findViewById(R.id.tv_desc);
         TextView textViewTitle = (TextView) findViewById(R.id.tv_title);
         TextView textViewReview = (TextView) findViewById(R.id.tv_review);
+        TextView textViewReleaseDate = (TextView) findViewById(R.id.tv_releaseDate);
         Picasso.with(this).load(movieData.moviePath).into(imageView);
         textViewTitle.setText(movieData.movieName);
         textViewDesc.setText(movieData.movieDescription);
         textViewReview.setText("Rating : " + String.valueOf(movieData.rating));
+        textViewReleaseDate.setText(movieData.releaseDate);
 
 
         Log.d(TAG,"Child Class "+movieData.movieDescription);
