@@ -1,3 +1,3 @@
 # MyMovie_p0
 The app fetches data form the sit https://www.themoviedb.org/.
-For running this app you need a auth key form this site.
+Please collect an auth key from https://www.themoviedb.org/  before launching the app.
