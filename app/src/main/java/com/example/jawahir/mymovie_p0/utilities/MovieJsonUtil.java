@@ -1,14 +1,10 @@
-package com.example.jawahir.mymovie_p0.Utilities;
+package com.example.jawahir.mymovie_p0.utilities;
 
-import android.nfc.Tag;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.HttpURLConnection;
-import java.util.Date;
 
 /**
  * Created by jawahir on 1/3/17.

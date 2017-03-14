@@ -3,24 +3,17 @@ package com.example.jawahir.mymovie_p0;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.*;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.jawahir.mymovie_p0.Utilities.MovieData;
+import com.example.jawahir.mymovie_p0.utilities.MovieData;
 import com.squareup.picasso.Picasso;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * Created by jawahir on 2/3/17.

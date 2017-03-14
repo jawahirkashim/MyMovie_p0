@@ -1,4 +1,4 @@
-package com.example.jawahir.mymovie_p0.Utilities;
+package com.example.jawahir.mymovie_p0.utilities;
 
 import android.net.Uri;
 import android.util.Log;

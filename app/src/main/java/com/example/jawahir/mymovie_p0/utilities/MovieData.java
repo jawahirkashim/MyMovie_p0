@@ -1,10 +1,7 @@
-package com.example.jawahir.mymovie_p0.Utilities;
+package com.example.jawahir.mymovie_p0.utilities;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by jawahir on 5/3/17.

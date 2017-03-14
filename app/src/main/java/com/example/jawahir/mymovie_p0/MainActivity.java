@@ -13,9 +13,9 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.jawahir.mymovie_p0.Utilities.MovieData;
-import com.example.jawahir.mymovie_p0.Utilities.MovieJsonUtil;
-import com.example.jawahir.mymovie_p0.Utilities.NetworkUtil;
+import com.example.jawahir.mymovie_p0.utilities.MovieData;
+import com.example.jawahir.mymovie_p0.utilities.MovieJsonUtil;
+import com.example.jawahir.mymovie_p0.utilities.NetworkUtil;
 
 import java.io.IOException;
 import java.net.URL;
