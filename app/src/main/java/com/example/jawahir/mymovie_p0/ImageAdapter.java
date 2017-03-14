@@ -58,7 +58,7 @@ public class ImageAdapter extends BaseAdapter {
         final String moviePath = mdata[position].getMoviePath();
         final String title = mdata[position].getMovieName();
         //textView.setText(title);
-        Picasso.with(context).load(moviePath).into(holder.image);
+        Picasso.with(context).load(moviePath).placeholder(R.drawable.image_01).error(R.drawable.image_01).into(holder.image);
         Log.d(TAG,title);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override

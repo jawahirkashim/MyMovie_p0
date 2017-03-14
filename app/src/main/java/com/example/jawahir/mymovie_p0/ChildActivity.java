@@ -36,7 +36,7 @@ public class ChildActivity extends AppCompatActivity {
 
 
         Log.d(TAG,"Child Class "+movieData.getMovieDescription());
-        //enable UP action bar 
+        //enable UP action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
