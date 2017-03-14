@@ -53,6 +53,7 @@ public class NetworkUtil {
     public static String getResponseFromHttpUrl(URL url) throws IOException {
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
+            urlConnection.setConnectTimeout(2000);//set timeout
             InputStream in = urlConnection.getInputStream();
 
             Scanner scanner = new Scanner(in);
