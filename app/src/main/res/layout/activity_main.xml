@@ -13,15 +13,15 @@
             android:id="@+id/gv_movie"
             android:numColumns="auto_fit"
             android:gravity="center"
-            android:columnWidth="150dp"
+            android:columnWidth="@dimen/layout_len_extra_large"
             android:stretchMode="columnWidth"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
         </GridView>
         <ProgressBar
             android:id="@+id/pb_movie"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="@dimen/layout_len_small"
+            android:layout_height="@dimen/layout_len_small"
             android:visibility="invisible"
             android:layout_gravity="center"/>
         <TextView
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:visibility="invisible"
             android:text="@string/error_id"
-            android:textSize="22sp"/>
+            android:textSize="@dimen/txt_size_extra_large"/>
     </FrameLayout>
 
 </LinearLayout>

@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 ImageAdapter imageAdapter = new ImageAdapter(MainActivity.this,movieDatas);
                 gridView.setAdapter(imageAdapter);
                 for (int i=0; i<movieDatas.length;i++) {
-                    Log.v(TAG,"Movie Name:  "+ movieDatas[i].movieName);
+                    Log.v(TAG,"Movie Name:  "+ movieDatas[i].getMovieName());
                 }
             } else {
                 showError();

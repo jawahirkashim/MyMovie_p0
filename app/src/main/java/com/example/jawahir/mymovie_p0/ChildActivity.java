@@ -18,7 +18,12 @@ public class ChildActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child);
-        MovieData movieData = (MovieData) getIntent().getSerializableExtra("Movieobject");
+        MovieData movieData;
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            movieData = (MovieData) getIntent().getExtras().getParcelable("Movieobject");
+        } else {
+            return;
+        }
 
         /*View view;
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE);
@@ -28,14 +33,14 @@ public class ChildActivity extends AppCompatActivity {
         TextView textViewTitle = (TextView) findViewById(R.id.tv_title);
         TextView textViewReview = (TextView) findViewById(R.id.tv_review);
         TextView textViewReleaseDate = (TextView) findViewById(R.id.tv_releaseDate);
-        Picasso.with(this).load(movieData.moviePath).into(imageView);
-        textViewTitle.setText(movieData.movieName);
-        textViewDesc.setText(movieData.movieDescription);
-        textViewReview.setText("Rating : " + String.valueOf(movieData.rating));
-        textViewReleaseDate.setText(movieData.releaseDate);
+        Picasso.with(this).load(movieData.getMoviePath()).into(imageView);
+        textViewTitle.setText(movieData.getMovieName());
+        textViewDesc.setText(movieData.getMovieDescription());
+        textViewReview.setText("Rating : " + String.valueOf(movieData.getRating()));
+        textViewReleaseDate.setText(movieData.getReleaseDate());
 
 
-        Log.d(TAG,"Child Class "+movieData.movieDescription);
+        Log.d(TAG,"Child Class "+movieData.getMovieDescription());
     }
 
 }

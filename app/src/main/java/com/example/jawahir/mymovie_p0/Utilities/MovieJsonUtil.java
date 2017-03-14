@@ -49,13 +49,13 @@ public final class MovieJsonUtil {
                 String poster_path = imagebase + jsonObj.getString("poster_path");
                 String title = jsonObj.getString("title");
                 String backdrop_path = jsonObj.getString("backdrop_path");
-                double vote_average = jsonObj.getDouble("vote_average");
+                String vote_average = jsonObj.getString("vote_average");
                 String overview = jsonObj.getString("overview");
                 data[i] = title+"\n "+overview;
                 String releaseDate = jsonObj.getString("release_date");
                 MovieData mdata = new MovieData(title,overview,poster_path, vote_average,releaseDate);
                 movieData[i] = mdata;
-                Log.v(TAG,"msg "+mdata.movieDescription+ " \n path  "+mdata.moviePath);
+                Log.v(TAG,"msg "+mdata.getMovieDescription()+ " \n path  "+mdata.getMoviePath());
             }
 
 

@@ -1,7 +1,9 @@
 package com.example.jawahir.mymovie_p0.Utilities;
 
 import android.net.Uri;
+import android.util.Log;
 
+import com.example.jawahir.mymovie_p0.BuildConfig;
 import com.example.jawahir.mymovie_p0.MainActivity;
 
 import java.io.IOException;
@@ -20,7 +22,7 @@ public class NetworkUtil {
     private static String Key_param = "api_key";
     private static String sortPopular = "popular";
     private static String sortTop = "top_rated";
-    private static String key = "PLEASE collect an auth key from https://www.themoviedb.org/ ";//SensitiveData.Key;
+    //private static String key = SensitiveData.Key;//"PLEASE collect an auth key from https://www.themoviedb.org/ ";//
 
 
     public static URL buildUrl( MainActivity.movieType type) {
@@ -35,7 +37,7 @@ public class NetworkUtil {
 
         }
         Uri builtUri = Uri.parse(BASE_URL).buildUpon().appendPath(sorttype).
-                appendQueryParameter(Key_param,key).
+                appendQueryParameter(Key_param, BuildConfig.THE_MOVIE_DB_API_TOKEN).
                 build();
 
         URL url = null;
@@ -44,7 +46,7 @@ public class NetworkUtil {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
+        Log.v(NetworkUtil.class.getSimpleName(),"Key :"+BuildConfig.THE_MOVIE_DB_API_TOKEN);
         return url;
     }
 

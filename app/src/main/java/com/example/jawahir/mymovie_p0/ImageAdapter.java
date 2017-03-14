@@ -57,8 +57,8 @@ public class ImageAdapter extends BaseAdapter {
         view = inflater.inflate(R.layout.movieposter_grid,null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imgv_movieposter);
         TextView textView = (TextView) view.findViewById(R.id.tv_moviposter);
-        final String moviePath = mdata[position].moviePath;
-        final String title = mdata[position].movieName;
+        final String moviePath = mdata[position].getMoviePath();
+        final String title = mdata[position].getMovieName();
         //textView.setText(title);
         Picasso.with(context).load(moviePath).into(imageView);
         Log.d(TAG,title);
@@ -67,7 +67,7 @@ public class ImageAdapter extends BaseAdapter {
             public void onClick(View v) {
                 //Toast.makeText(context,"msg "+title,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(context,ChildActivity.class);
-                MovieData movieData = new MovieData(title,mdata[position].movieDescription,moviePath,mdata[position].rating,mdata[position].releaseDate);
+                MovieData movieData = new MovieData(title,mdata[position].getMovieDescription(),moviePath,mdata[position].getRating(),mdata[position].getReleaseDate());
                 intent.putExtra("Movieobject",movieData);
                 context.startActivity(intent);
             }
